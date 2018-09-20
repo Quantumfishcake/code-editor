@@ -1,0 +1,53 @@
+.codeContainer{
+	background-color: white;
+	margin-top: 50px;
+	height: 100%;
+	width: 100%;
+	float: left;
+	border-right: solid black 1px; 
+	position: relative;
+	overflow: scroll;
+    overflow-y: hidden;
+}
+
+.column {
+	border-right: solid black 1px; 
+}
+iframe {
+	height: 100%;
+	width: 100%;
+	margin-left: 25px;
+	font-family: "Courier New";
+	font-weight: bold;
+	border: none;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 50% 50%
+}
+
+.codeTextArea {
+	height: 100%;
+	width: 100%;
+	margin-left: 25px;
+	border: none;
+	
+}
+
+.CSS-box, .JS-box {
+    display: none;
+}
+
+.navButtons {
+	list-style-type: none;
+}
+
+#btnRun {
+	float: right;
+}
+
+.active {
+	background-color: red;
+}
+
