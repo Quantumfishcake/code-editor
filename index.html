@@ -1,57 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Code Editor</title>
     <link rel="stylesheet" type="text/css" href="css/master.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./vs/editor/editor.main.css">
 </head>
+
 <body>
-    <nav>
-        <div class='navbar'>
-        <div class="navbarInner">
-            <li class="navButtons">
-                  <button class="navButton active">HTML</button>
-                  <button class="navButton">CSS</button>
-                  <button class="navButton">JS</button>
-                  <button class="navButton active">RESULT</button>
-                  <button id="btnRun" class="navButton">RUN</button>
-            </li>
-               
-        </div>
-        </div>
+    <nav class='navbar'>
+        <button class="navButton active">HTML</button>
+        <button class="navButton">CSS</button>
+        <button class="navButton">JS</button>
+        <button class="navButton active">RESULT</button>
+        <button id="btnRun" class="navButton">RUN</button>
     </nav>
-    <main>
-        <div class='wrapper'>
-            <div class='row'>
-                <div class='column HTML-box'>
-                    <div class='codeContainer'>
-                        <textarea class='codeTextArea' id='HTMLtext' placeholder="HTML"></textarea>
-                    </div>
-                </div>
-                <div class='column CSS-box'>
-                    <div class='codeContainer'>
-                        <textarea class='codeTextArea' id='CSStext' placeholder="CSS"></textarea>
-                    </div>
-                </div>
-                <div class='column JS-box'>
-                    <div class='codeContainer'>
-                        <textarea class='codeTextArea' id='JStext' placeholder="JS"></textarea>
-                    </div>
-                </div>
-                <div class='column RESULT-box'>
-                    <div class='codeContainer'>
-                        <iframe class='resultArea' id='RESULTtext'>RESULT</iframe>
-                    </div>
-                </div>
+    <main class='row'>
+        <div class='column HTML-box'>
+            <div class='codeContainer'>
+                <div class='codeTextArea' id='htmlEditor'></div>
             </div>
         </div>
-
-
+        <div class='column CSS-box'>
+            <div class='codeContainer'>
+                <div class='codeTextArea' id='cssEditor'></div>
+            </div>
+        </div>
+        <div class='column JS-box'>
+            <div class='codeContainer'>
+                <div class='codeTextArea' id='jsEditor'></div>
+            </div>
+        </div>
+        <div class='column RESULT-box'>
+            <iframe class='resultArea' id='RESULTtext'>RESULT</iframe>
+        </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./vs/loader.js"></script>
     <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>

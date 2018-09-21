@@ -1,60 +1,67 @@
-$(document).ready( function(){
-      
+$(document).ready(function () {
 
-			var windowHeight = $(window).height();
-			var navBarHeight = $(".navbar").height();
-			var codeContainerHeight = windowHeight - navBarHeight;
-			$(".codeContainer").height(codeContainerHeight - 20 +"px");
-			$(".codeContainer").css("marginTop",navBarHeight+1);
+	$(".navButton").click(function () {
+		$(this).toggleClass("active");
+		$("." + $(this).html() + "-box").toggle();
+	});
+
+	const res = $(".resultArea").contents().find("body");
+	res.html(`<div id="resHTML"></div><style id="resCSS"></style>`);
+
+	require.config({ paths: { 'vs': 'vs' } });
+	require(['vs/editor/editor.main'], () => {
+
+		const sharedConfig = {
+			automaticLayout: true,
+			minimap: {
+				enabled: false
+			},
+			theme: "vs-dark",
+		}
+
+		const htmlEditor = monaco.editor.create(document.getElementById('htmlEditor'), {
+			value: [
+				'<html>',
+				'</html>'
+			].join('\n'),
+			language: 'html',
+			...sharedConfig
+		});
+
+		const cssEditor = monaco.editor.create(document.getElementById('cssEditor'), {
+			value: [
+				'body {',
+				'  font-family: sans-serif;',
+				'  color: white;',
+				'  background: black;',
+				'}'
+			].join('\n'),
+			language: 'css',
+			...sharedConfig
+		});
+
+		const jsEditor = monaco.editor.create(document.getElementById('jsEditor'), {
+			value: [
+				'console.log(\'hello\')'
+			].join('\n'),
+			language: 'javascript',
+			...sharedConfig
+		});
+
+		htmlEditor.onDidChangeModelContent(() => {
+			res.find("#resHTML").html(htmlEditor.getValue());
+		})
+		cssEditor.onDidChangeModelContent(() => {
+			res.find("#resCSS").html(cssEditor.getValue());
+		})
+
+		res.find("#resHTML").html(htmlEditor.getValue());
+		res.find("#resCSS").html(cssEditor.getValue());
 
 
-            $(".navButton").click
-			(
-				function()
-				{
-					$(this).toggleClass("active");
-					var activeDiv = $(this).html();
-					$("."+activeDiv+"-box").toggle();
-					var visibleDivs = $(".column").filter(function(){
-							return($(this).css("display")!="none");
-						}).length;	
-                    var Width = 100/visibleDivs;
-                
-					$(".row").css("grid-template-columns", 'repeat'+'('+ visibleDivs + ', ' + '1fr');
-				}
-			);
-
-			
-			var res = $(".resultArea").contents().find("body");
-			// res.css("margin","2px");
-			 res.html('<div id="resHTML"></div><style id="resCSS"></style>');
-		
-		
-			 $("#htmlcontainer").html('');
-			 $("#csscontainer").html('');
-			 res.find("#resHTML").html('');
-			 res.find("#resCSS").html('');
-		
-		
-			 
-			 $("#HTMLtext").on('keyup',function(){
-				  res.find("#resHTML").html($(this).val());
-			 });
-		
-			 $("#CSStext").on('keyup',function(){
-				  res.find("#resCSS").html($(this).val());
-			 });
-		
-			 $("#JStext").on('change',function(){
-			  res.find("#botjs").remove();
-			  res.append('<script id="botjs">'+$(this).val()+'</script>');
-			 });
-		
-			 $("#btnRun").on('click',function(){
-			  res.find("#botjs").remove();
-			  res.append('<script id="botjs">'+$("#JStext").val()+'</script>');
-			 });
-		
-
-
+		$("#btnRun").on('click', () => {
+			res.find("#botjs").remove();
+			res.append('<script id="botjs">' + jsEditor.getValue() + '</script>');
+		});
+	});
 })

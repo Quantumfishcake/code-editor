@@ -1,53 +1,79 @@
+body {
+	background: #1E1E1E;
+	height: 100vh;
+	display: flex;
+	margin: 0;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.navbar {
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
 .codeContainer{
-	background-color: white;
-	margin-top: 50px;
+	margin-top: 20px;
+	background-color:  #1E1E1E;
 	height: 100%;
-	width: 100%;
-	float: left;
-	border-right: solid black 1px; 
 	position: relative;
 	overflow: scroll;
-    overflow-y: hidden;
+	overflow-y: hidden;
 }
 
 .column {
-	border-right: solid black 1px; 
+	border: solid black 1px;
 }
+
 iframe {
 	height: 100%;
 	width: 100%;
-	margin-left: 25px;
-	font-family: "Courier New";
 	font-weight: bold;
 	border: none;
 }
 
 .row {
-    display: grid;
-    grid-template-columns: 50% 50%
+	display: flex;
+	flex: 1;
+	overflow: hidden;	
+}
+
+.row > * {
+	flex: 1;
+	overflow: hidden;
 }
 
 .codeTextArea {
 	height: 100%;
 	width: 100%;
-	margin-left: 25px;
 	border: none;
-	
-}
-
-.CSS-box, .JS-box {
-    display: none;
-}
-
-.navButtons {
-	list-style-type: none;
 }
 
 #btnRun {
 	float: right;
+	background: #096D09;
+}
+
+#btnRun:hover {
+	background: rgb(7, 95, 7);
+}
+
+.navButton {
+	padding: 10px 20px;
+	color: white;
+	background: transparent;
+	border-radius: 5px;
+	border: none;
+	transition: 0.2s ease all;
 }
 
 .active {
-	background-color: red;
+	background: #569cd6;
 }
 
+.active:hover {
+	background: #458ac2;
+}
+.CSS-box, .JS-box {
+    display: none;
+}
